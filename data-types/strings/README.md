@@ -38,8 +38,16 @@ Did you read the Launch School post? Great! Then most of what is in this file sh
 As a quick test, answer the following questions:
 
 - What is minitest?
+
+Minitest is a testing framework, which is a software that tests each component of an application. It comes with every standard Ruby distribution.
+
 - What does `assert_equal` mean? How many arguments does it expect?
+
+Tests whether an expected value matches the actual return value. `assert_equal expected, actual`
+
 - What will `assert_equal true, true` return?
+
+
 - How do you “run” a test file?
 - is a “failing” test a bad thing?
 - does minitest run all the tests in order?
