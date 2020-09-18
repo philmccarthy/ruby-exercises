@@ -8,10 +8,7 @@ class Vampire
   end
 
   def thirsty?
-    if self.thirsty == true
-      true
-    else false
-    end
+    self.thirsty == true
   end
 
   def drink
