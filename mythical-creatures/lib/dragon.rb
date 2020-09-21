@@ -1,19 +1,19 @@
 class Dragon
   attr_accessor :name, :color, :rider, :hungry, :eat_count
 
-  def initialize(name = "", color = "", rider = "")
+  def initialize(name, color, rider)
     @name = name
-    @color = color.to_sym
+    @color = color
     @rider = rider
-    self.hungry = true
-    self.eat_count = 0
+    @hungry = true
+    @eat_count = 0
   end
 
   def hungry?
-    self.eat_count < 3
+    @eat_count < 3
   end
 
   def eat
-    self.eat_count += 1
+    @eat_count += 1
   end
 end
