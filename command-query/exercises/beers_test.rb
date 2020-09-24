@@ -2,6 +2,7 @@ gem 'minitest', '~> 5.2'
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative 'beers'
+require 'pry'
 
 class BeersTest < Minitest::Test
   def test_inventory_starts_at_99
@@ -10,7 +11,7 @@ class BeersTest < Minitest::Test
   end
 
   def test_inventory_decreases
-    skip
+    # skip
     beers = Beers.new
 
     beers.take_one_down_and_pass_it_around
@@ -21,14 +22,15 @@ class BeersTest < Minitest::Test
   end
 
   def test_restocking
-    skip
+    # skip
     beers = Beers.new
-
     43.times { beers.take_one_down_and_pass_it_around }
     beers.restock
     assert_equal 99, beers.inventory
 
     5.times { beers.take_one_down_and_pass_it_around }
+    beers.inventory
+    assert_equal 94, beers.inventory
     beers.restock
     assert_equal 99, beers.inventory
   end
