@@ -22,9 +22,6 @@ class Centaur
   end
 
   def run
-    return "NO!" if cranky? && !standing?
-
-
     if !cranky? && standing?
       @activity_count += 1
       "Clop clop clop clop!!!"
