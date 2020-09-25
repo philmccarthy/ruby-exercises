@@ -65,6 +65,10 @@ class MedusaTest < Minitest::Test
     medusa.stare(victim_four)
 
     refute victim_one.stoned?
+    assert victim_two.stoned?
+    assert victim_three.stoned?
+    assert victim_four.stoned?
+    assert_equal 3, medusa.statues.size
   end
 
 end

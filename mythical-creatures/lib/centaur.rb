@@ -13,10 +13,8 @@ class Centaur
     @sick = false
   end
 
-
   def shoot
-
-    if !self.cranky? && @standing == true
+    if !cranky? && @standing == true
       @activity_count += 1
       "Twang!!!"
     else "NO!"
@@ -24,7 +22,10 @@ class Centaur
   end
 
   def run
-    if !self.cranky? && @standing == true
+    return "NO!" if cranky? && !standing?
+
+
+    if !cranky? && standing?
       @activity_count += 1
       "Clop clop clop clop!!!"
     else "NO!"
@@ -32,17 +33,17 @@ class Centaur
   end
 
   def cranky?
-    self.cranky_update
+    cranky_update
     @cranky
   end
 
   def cranky_update
-    if @rested == true
-      @cranky = false
-    elsif @activity_count >= 3
-      @cranky = true
-    else @cranky = false
-    end
+    @cranky = if rested?
+                false
+              elsif @activity_count >= 3
+                true
+              else false
+              end
   end
 
   def standing?
@@ -82,14 +83,9 @@ class Centaur
   end
 
   def drink_potion
-    # check standing?
-    # drink only if standing
-    # set rested to true
-    # else fails, "NO!"
-
-    if self.standing? && @rested == true
+    if standing? && @rested == true
       @sick = true
-    elsif self.standing?
+    elsif standing?
       @rested = true
     else "NO!"
     end
