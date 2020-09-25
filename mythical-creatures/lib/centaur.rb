@@ -14,7 +14,7 @@ class Centaur
   end
 
   def shoot
-    if !cranky? && @standing == true
+    if !cranky? && standing?
       @activity_count += 1
       "Twang!!!"
     else "NO!"
@@ -65,7 +65,7 @@ class Centaur
   end
 
   def sleep
-    if @standing == true
+    if standing?
       "NO!"
     else
       @cranky = false
@@ -83,7 +83,7 @@ class Centaur
   end
 
   def drink_potion
-    if standing? && @rested == true
+    if standing? && rested?
       @sick = true
     elsif standing?
       @rested = true
