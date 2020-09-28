@@ -1,32 +1,18 @@
 class Centaur
   attr_reader :name, :breed
-  attr_accessor :cranky, :standing
 
   def initialize(name, breed)
     @name = name
     @breed = breed
     @cranky = false
     @standing = true
-    @laying = false
     @activity_count = 0
     @rested = false
     @sick = false
   end
 
-  def shoot
-    if !cranky? && standing?
-      @activity_count += 1
-      "Twang!!!"
-    else "NO!"
-    end
-  end
-
-  def run
-    if !cranky? && standing?
-      @activity_count += 1
-      "Clop clop clop clop!!!"
-    else "NO!"
-    end
+  def ready?
+    !cranky? && standing?
   end
 
   def cranky?
@@ -34,31 +20,49 @@ class Centaur
     @cranky
   end
 
-  def cranky_update
-    @cranky = if rested?
-                false
-              elsif @activity_count >= 3
-                true
-              else false
-              end
-  end
-
   def standing?
     @standing
   end
 
-  def stand_up
-    @laying = false
-    @standing = true
+  def laying?
+    !standing?
   end
 
-  def laying?
-    @laying
+  def rested?
+    @rested
+  end
+
+  def sick?
+    @sick
+  end
+
+  def shoot
+    return "NO!" if !ready?
+    @activity_count += 1
+    "Twang!!!"
+  end
+
+  def run
+    return "NO!" if !ready?
+    @activity_count += 1
+    "Clop clop clop clop!!!"
+  end
+
+  def cranky_update
+    @cranky = if rested?
+      false
+    elsif @activity_count >= 3
+      true
+    else false
+    end
+  end
+
+  def stand_up
+    @standing = true
   end
 
   def lay_down
     @standing = false
-    @laying = true
   end
 
   def sleep
@@ -69,14 +73,6 @@ class Centaur
       @rested = true
       "Sleeping m'lord."
     end
-  end
-
-  def rested?
-    @rested
-  end
-
-  def sick?
-    @sick
   end
 
   def drink_potion
