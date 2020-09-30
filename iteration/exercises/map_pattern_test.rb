@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'pry'
 
 class MapPatternTest < Minitest::Test
 
@@ -13,6 +14,7 @@ class MapPatternTest < Minitest::Test
   end
 
   def test_2
+    # skip
     family = {
       mother: "alice",
       father: "bob",
@@ -30,18 +32,37 @@ class MapPatternTest < Minitest::Test
     assert_equal expected, capitalized_family
   end
 
+  # def test_2_map
+  #   skip
+  #   Use the above each method as a guide to edit the existing family hash
+  #   family = {
+  #     mother: "alice",
+  #     father: "bob",
+  #     brother: "charlie"
+  #   }
+  #   family.map do |relationship, name|
+  #     family[relationship] = name.capitalize
+  #   end
+  #   expected = {
+  #     mother: "Alice",
+  #     father: "Bob",
+  #     brother: "Charlie"
+  #   }
+  # assert_equal expected, family
+  # end
+
   def test_3
-    skip
+    # skip
     numbers = [1, 2, 3, 4, 5]
     doubles = []
     numbers.each do |number|
-      # Your Code Here
+      doubles << number * 2
     end
     assert_equal [2, 4, 6, 8, 10], doubles
   end
 
   def test_4
-    skip
+    # skip
     numbers = {
       one: 1,
       two: 2,
@@ -51,7 +72,7 @@ class MapPatternTest < Minitest::Test
     }
     doubles = {}
     numbers.each do |name, number|
-      # Your Code Here
+      doubles[name] = number * 2
     end
     expected = {
       one: 2,
@@ -64,16 +85,18 @@ class MapPatternTest < Minitest::Test
   end
 
   def test_5
-    skip
+    # skip
     numbers = [1, 2, 3, 4, 5]
     squares = []
-    # Your Code Here
+    numbers.each do |number|
+      squares << number ** 2
+    end
 
     assert_equal [1, 4, 9, 16, 25], squares
   end
 
   def test_6
-    skip
+    # skip
     numbers = {
       one: 1,
       two: 2,
@@ -82,7 +105,9 @@ class MapPatternTest < Minitest::Test
       five: 5
     }
     squares = {}
-    # Your Code Here
+      numbers.each do |word, numeric|
+        squares[word] = numeric ** 2
+      end
 
     expected = {
       one: 1,
@@ -95,15 +120,18 @@ class MapPatternTest < Minitest::Test
   end
 
   def test_7
-    skip
+    # skip
     names = ["alice", "bob", "charlie", "david", "eve"]
-    #Your Code Here
+    lengths = []
+    names.each do |name|
+      lengths << name.length
+    end
 
     assert_equal [5, 3, 7, 5, 3], lengths
   end
 
   def test_8
-    skip
+    # skip
     family = {
       mother: "alice",
       father: "bob",
@@ -111,7 +139,10 @@ class MapPatternTest < Minitest::Test
       uncle: "david",
       sister: "eve"
     }
-    #Your Code Here
+    lengths = {}
+    family.each do |relationship, name|
+      lengths[relationship] = name.length
+    end
 
     expected = {
       mother: 5,
@@ -124,15 +155,18 @@ class MapPatternTest < Minitest::Test
   end
 
   def test_9
-    skip
+    # skip
     names = ["alice", "bob", "charlie", "david", "eve"]
-    #Your Code Here
+    backwards = []
+    names.each do |name|
+      backwards << name.reverse
+    end
 
     assert_equal ["ecila", "bob", "eilrahc", "divad", "eve"], backwards
   end
 
   def test_10
-    skip
+    # skip
     family = {
       mother: "alice",
       father: "bob",
@@ -140,7 +174,14 @@ class MapPatternTest < Minitest::Test
       uncle: "david",
       sister: "eve"
     }
-    #Your Code Here
+    backwards = {}
+    family.each do |relationship, name|
+      backwards[relationship] = name.reverse
+    end
+
+    # backwards = family.map do |relationship, name|
+    #   [relationship, name.reverse]
+    # end.to_h
 
     expected = {
       mother: "ecila",
